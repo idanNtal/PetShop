@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model GenericDoubleModel<IdentityUser, IEnumerable<Comment>>
+
+@{
+    ViewBag.Title = "User Info";
+}
+
+<div class="Get_inTheMiddle text-center" style="display: flex;">
+    <div class="Get_inTheMiddle text-center card bg-secondary mb-3 mx-auto" style="max-width: 400px;">
+        <div class="card-body">
+            <h2 class="card-title text-center text-warning">@Model.Model_1!.UserName Card</h2>
+            <div class="form-group">
+                <h5 class="card-subtitle text-underline text-dark">ID</h5>
+                <input class="form-control text-center" readonly value="@Model.Model_1!.Id" />
+            </div>
+            <div class="form-group">
+                <h5 class="card-subtitle text-underline text-dark">Email</h5>
+                <input class="form-control text-center" readonly value="@Model.Model_1!.Email" />
+            </div>
+            <div class="form-group">
+                <h5 class="card-subtitle text-underline text-dark">Phone</h5>
+                <input class="form-control text-center" readonly value="@Model.Model_1!.PhoneNumber" />
+            </div>
+            <div class="form-group">
+                <h5 class="card-subtitle text-underline text-dark">Roles</h5>
+                <ul class="list-group">
+                    @foreach (var role in ViewBag.UserRoles)
+                    {
+                        <li class="list-group-item text-center">@role</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="userInfo_EditRole" style="display: block">
+        <br /><br />
+        @if (User.IsInRole("Management"))
+        {
+            <form method="post" asp-action="EditUserRoles" asp-controller="Account">
+                <input type="hidden" id="userId" name="userId" value="@Model.Model_1!.Id" />
+                <div id="Add_Role">
+                    <h3 class="card-title text-center">Edit Roles :</h3>
+                    @foreach (var role in ViewBag.Roles)
+                    {
+                        bool isInRole = ViewBag.UserRoles.Contains(role.Name!);
+                        <div class="input-group mb-3">
+                            <div class="input-group-text">
+                                <input type="checkbox" id="@role" name="roles" value="@role" @(isInRole ? "checked" : "")/>
+                            </div>
+                            <label class="form-control" for="@role">@role</label>
+                        </div>
+                        <br />
+                    }
+                    <button type="submit" class="btn btn-outline-dark">Edit</button>
+                </div>
+            </form>
+        }
+        @if (TempData.ContainsKey("ErrorMessage"))
+        {
+            <br />
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+    </div>
+</div>
+<br />
+
+<div class="Get_inTheMiddle text-center">
+    <form method="post" asp-action="removeComments" asp-controller="Admin">
+        <input type="hidden" id="userId" name="userId" value="@Model.Model_1!.Id" />
+        <h3 class="text-underline">@Model.Model_1!.UserName Comments (@Model.Model_2!.Count())</h3>
+        <button type="submit">Delete all selected comments</button>
+        <br /><br />
+        <table class="table table-active table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th></th>
+                    <th scope="col">CommentID</th>
+                    <th scope="col">Animal</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">DateTime</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var comment in Model.Model_2!)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" value="@comment.Id" name="commentsIDs"/>
+                        </td>
+                        <td scope="row">@comment.Id</td>
+                        <td >@comment.Animal!.Name</td>
+                        <td id="td_commentUserInfo">@comment.comment</td>
+                        <td >@comment.CreatedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>

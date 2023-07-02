@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebAppProject.Models.Category>
+
+@{
+    ViewBag.Title = "Catalog";
+
+}
+
+@section Scripts{
+    <script src="~/scripts/ShowCategory.js"></script>
+}
+
+<h2>Please Select a category</h2>
+<div class="text-center">
+    <select name="categorySelect" id="categorySelect" class=" btn btn-info">
+        <option value="All">All</option>  
+        @foreach (var category in Model)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <br><br>
+</div>
+
+<div class="Get_inTheMiddle">
+    <table id="tbl_CatalogPage" class="styled-table">
+        <thead>
+            <tr>
+                <th>Portrait</th>
+                <th>Name</th>
+                <th>Find out more and comment</th>
+            </tr>
+        </thead>
+        <tbody id="animalTableBody">
+            @foreach (var category in Model)
+            {
+                @foreach (var animal in category.Animals!)
+                {
+                    <tr class="category-@category.Id">
+                        <td><img src="~/Images/Animals/@animal.PictureName" /></td>
+                        <td>@animal.Name</td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="AnimalDetails" asp-controller="Catalog" asp-route-id="@animal.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

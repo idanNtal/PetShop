@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome</title>
+    <link href="~/styles/welcome.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <div>
+        <div class="welcome-text">
+            <h1>Welcome</h1>
+            <h2>This is my pet shop project</h2>
+            <h3>Created By Idan Tal</h3>
+        </div>
+        <button onclick="location.href='@Url.Action("HomePage", "Home")'">View the Project</button>
+    </div>
+
+</body>
+</html>

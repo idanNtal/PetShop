@@ -1,0 +1,461 @@
+﻿* {
+    font-family: cursive, serif, Georgia;
+}
+body {
+    background-color: gray;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoAXXElJyj_p6V7crMr-C5AWhSisdHiD-g0w&usqp=CAU);
+}
+
+#layout-content {
+    border-radius: 50%;
+    background-color: gray;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoAXXElJyj_p6V7crMr-C5AWhSisdHiD-g0w&usqp=CAU);
+    filter: contrast(200%);
+}
+
+
+#CreateBy {
+    margin-top: 5px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    text-align: center;
+    font-size: 12px;
+}
+
+#Upper_navbar {
+    margin-bottom: 0.2%;
+}
+
+.Get_inTheMiddle {
+    margin-top: 1%;
+    width: 80%;
+    margin: auto;
+}
+
+img {
+    width: 150px;
+    height: 100px;
+    border: 2px dotted white;
+    border-radius: 50%;
+}
+
+.Maintitle {
+    text-align: center;
+    margin-bottom: 0.2%;
+}
+
+    .Maintitle h1 {
+        font-size: 40px;
+        color: rgb(63, 63, 63);
+        text-transform: capitalize;
+        letter-spacing: 3px;
+        margin: 0;
+        padding: 20px;
+        text-shadow: 1px 1px 1px aqua, 2px 2px 1px white;
+        border: 2px solid lightgray;
+        border-radius: 30%;
+        display: inline-block;
+        text-align: center;
+        letter-spacing: 2px;
+        background-color: transparent;
+        font-weight: bold;
+    }
+
+.main-content {
+   
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    padding: 4%;
+    padding-top: 1%;
+    background-color: antiquewhite;
+    border-radius: 1vw;
+    box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, 0.2);
+}
+
+    .main-content h2 {
+        font-size: 36px;
+        text-decoration: underline;
+        text-align: center;
+        justify-items: center;
+        font-weight: bold;
+    }
+
+
+
+
+.FullLine {
+    text-transform: uppercase;
+    border-bottom: 2px solid #333;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+    justify-items: center;
+}
+
+/* Links to save
+search :
+https://cdn3.iconfinder.com/data/icons/other-icons/48/search-512.png 
+
+*/
+
+
+/* Table Styles */
+.styled-table {
+    width: 100%;
+    text-align: center;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+    .styled-table th,
+    .styled-table td {
+        padding: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .styled-table th {
+        background-color: #333;
+        font-family: Georgia;
+    }
+
+    .styled-table tr {
+        background-color: gray;
+    }
+
+    /* Alternate Row Colors */
+    .styled-table tr:nth-child(even) {
+        background-color: #303050;
+    }
+
+    /* Hover Effect */
+    .styled-table tr:hover {
+        background-color: lightblue;
+    }
+
+    /* Image Styles */
+    .styled-table img {
+        width: 150px;
+        height: 150px;
+        filter: contrast(150%);
+    }
+
+
+/* Animal Details Page*/
+
+#comments-title {
+    text-align: right;
+    margin-right: 20%;
+    text-decoration: underline; /* Add an underline to the text */
+}
+
+
+#content_animalDetails {
+    display: flex;
+}
+
+#tbl_AnimalDetailes {
+    border-style: none;
+}
+    #tbl_AnimalDetailes table, #tbl_AnimalDetailes th, #tbl_AnimalDetailes td{
+        border-radius: 50%;
+    }
+
+.comments-container {
+    height: 250px; /* Set a fixed height for the container */
+    flex: 0 0 40%; /* Set comments container width to 40% */
+    margin-left: 5%; /* Add 5% space to the left */
+    overflow-y: scroll; /* Enable vertical scrollbar when needed */
+    width: var(--comments-width); /* Set the width using the CSS variable */
+}
+
+#enter-comment {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    #enter-comment textarea {
+        height: 100px;
+        width: 500px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    #enter-comment button {
+        margin-bottom: 1%;
+    }
+
+
+/*** Comments List Style ***/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:900|Raleway:400,400i,700,700i);
+ul.comments > li::before, ul.comments > li {
+    box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
+}
+
+
+ul.comments {
+    counter-reset: gradient-counter;
+    list-style: none;
+    margin: 1.75rem 1rem;
+    padding-left: 1rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+    ul.comments > li {
+        background: white;
+        border-radius: 0 0.5rem 0.5rem 0.5rem;
+        counter-increment: gradient-counter;
+        min-height: 2rem;
+        padding: 1rem;
+        position: relative;
+    }
+
+        ul.comments > li::before, ul.comments > li::after {
+            background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
+            border-radius: 1rem 1rem 0 1rem;
+            content: "";
+            height: 2rem;
+            left: -1rem;
+            overflow: hidden;
+            position: absolute;
+            top: -1rem;
+            width: 3rem;
+        }
+
+        ul.comments > li::before {
+            align-items: flex-end;
+            content: counter(gradient-counter);
+            color: #1d1f20;
+            display: flex;
+            font: 900 1.5em/1 "Montserrat";
+            justify-content: flex-end;
+            padding: 0.125em 0.25em;
+            z-index: 1;
+        }
+
+        ul.comments > li:nth-child(10n+1):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+2):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+3):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+4):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+5):before {
+            background: linear-gradient(135deg, #a2ed56 0%, #fddc32 100%);
+        }
+
+        ul.comments > li:nth-child(10n+6):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.8) 0%, rgba(253, 220, 50, 0.8) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+7):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.6) 0%, rgba(253, 220, 50, 0.6) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+8):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.4) 0%, rgba(253, 220, 50, 0.4) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+9):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0.2) 0%, rgba(253, 220, 50, 0.2) 100%);
+        }
+
+        ul.comments > li:nth-child(10n+10):before {
+            background: linear-gradient(135deg, rgba(162, 237, 86, 0) 0%, rgba(253, 220, 50, 0) 100%);
+        }
+
+        ul.comments > li + li {
+            margin-top: 1.5rem;
+        }
+
+
+/** Edit Animal !! **/
+#addEditAnimal_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 5%;
+}
+
+#addEditAnimal_context {
+    flex-basis: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+#editAnimal_img img {
+    flex-basis: 45%;
+    border-width: 5px;
+    border-color: black;    
+    height: 400px;
+    width: auto;
+    max-width: 500px;
+}
+/*Navigation Bar*/
+.navbar {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 10vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    border-radius: 50px;
+}
+
+
+    .navbar .all {
+        display: flex;
+        perspective: 10px;
+        transform: perspective(300px) rotateX(20deg);
+        will-change: perspective;
+        perspective-origin: center center;
+        transition: all 1.3s ease-out;
+        justify-content: center;
+        transform-style: preserve-3d;
+        margin-top: 2px;
+    }
+
+        .navbar .all:hover {
+            perspective: 1000px;
+            transition: all 1.3s ease-in;
+            transform: perspective(10000px) rotateX(0deg);
+        }
+
+            .navbar .all:hover .text {
+                opacity: 1;
+            }
+
+            .navbar .all:hover > a {
+                opacity: 1;
+                transition-delay: 0s;
+            }
+
+            .navbar .all:hover .explainer {
+                opacity: 0;
+            }
+
+.left, .middle, .right, .lefter, .righter {
+    width: 60px;
+    height: 40px;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 20px 5px lightblue;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transition-delay: 1s;
+    position: relative;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: rgb(73, 188, 246);
+    cursor: pointer;
+    background-blend-mode: color-burn;
+}
+
+    .left:hover, .middle:hover, .right:hover, .lefter:hover, .righter:hover {
+        box-shadow: 0 0 30px 10px rgb(93, 236, 236);
+        background-color: #ccf;
+    }
+
+.text {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    bottom: 0;
+    position: absolute;
+    will-change: transform;
+    color: black;
+    background-color: wheat;
+    border-radius: 20%;
+    text-shadow: 0 0 5px rgb(73, 188, 246);
+}
+
+.lefter {
+    transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
+    background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/app_window-512.png);
+}
+
+.left {
+    transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
+    background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/creative_draw-512.png);
+}
+
+.middle {
+    opacity: 1;
+    background-image: url(https://cdn0.iconfinder.com/data/icons/devices-164/96/display-monitor-screen-desktop-64.png);
+}
+
+.right {
+    transform: translateX(30px) translateZ(-25px) rotateY(5deg);
+    background-image: url(https://cdn4.iconfinder.com/data/icons/social-media-and-logos-12/32/Logo_LinkedIn-64.png);
+}
+
+.righter {
+    transform: translateX(60px) translateZ(-50px) rotateY(10deg);
+    background-image: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-64.png);
+}
+
+.explainer {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #fff;
+    transition: all 0.6s ease;
+    width: 100%;
+    height: 100%;
+    background-color: #303050;
+    background-image: radial-gradient(circle at center top, rgb(73, 188, 246));
+    border-radius: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#td_commentUserInfo {
+    max-width: 20%;
+    overflow-wrap: anywhere;
+}
+
+/** Validation !! **/
+#commentError {
+    color: red;
+    display: none;
+}
+
+.error {
+    color: red;
+    font-size: 18px;
+    margin: 5px;
+}
+
+td > span.error {
+    width: 1px;
+    white-space: nowrap;
+}

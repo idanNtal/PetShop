@@ -1,0 +1,126 @@
+﻿@model WebAppProject.Models.Animal
+
+@{
+    ViewBag.Title = Model == null ? "Add Animal" : "Edit Animal";
+    var defaultImage = Model != null ? Url.Content("~/Images/Animals/" + Model.PictureName) : "https://www.bstrategic.co.il/wp-content/themes/dfd-native/assets/images/no_image_resized_675-450.jpg";
+}
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/scripts/Validations/AnimalValidation.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {    
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#editAnimal_img img').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                // Set default image based on mode
+                var defaultImageUrl = '@Html.Raw(defaultImage)'; // Escape the defaultImage value
+
+                $('#editAnimal_img img').attr('src', defaultImageUrl);
+            }
+        }
+
+        $(document).ready(function () {
+            $('#picture').change(function () {
+                readURL(this);
+            });
+
+            // Initialize image on page load
+            readURL($('#picture')[0]);
+
+
+        });
+    </script>
+}
+
+
+<h2>
+    @(Model == null ? "Add New Animal" : $"Edit {Model.Name}")
+</h2>
+
+<div id="addEditAnimal_container" class="Get_inTheMiddle">
+    <div id="editAnimal_img">
+        <img src="" />
+    </div>
+    <form method="post" action="/Admin/AddEditAnimal" enctype="multipart/form-data">
+        @if (Model != null)
+        {
+            <input type="hidden" id="Id" name="Id" value="@Model.Id"/>
+            <input type="hidden" id="mode" name="mode" value="@ViewBag.Mode"/>
+        }
+        <div id="addEditAnimal_context">
+            <table>
+                <tr>
+                    <td><label asp-for="Name">Name: </label></td>
+                    <td><input asp-for="Name" type="text" value="@Model?.Name" id="name" data-val-remote-additionalfields="*.Id" /></td>
+                    <td><span class="error" asp-validation-for="Name" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Age">Age: </label></td>
+                    <td><input asp-for="Age" type="number" value="@Model?.Age" id="age"/></td>
+                    <td><span class="error" asp-validation-for="Age"/></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Picture">Picture: </label></td>
+                    <td>
+                        @if (Model == null)
+                        {
+                            <input type="file" asp-for="Picture" id="picture" accept="image/png" required />
+                        }
+                        else
+                        {
+                            <input type="file" asp-for="Picture" id="picture" accept="image/png" />
+                        }
+                    </td>
+                    <td><span class="error" asp-validation-for="Picture"/></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Description">Description: </label></td>
+                    <td><textarea asp-for="Description" id="description">@Model?.Description</textarea></td>
+                    <td><span class="error" asp-validation-for="Description" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CategoryId">Category: </label></td>
+                    <td>
+                        <select asp-for="CategoryId" id="category">
+                            <option value="" selected disabled>All Categories</option>
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                if (Model != null && Model.CategoryId == category.Id)
+                                {
+                                    <option value="@category.Id" selected>@category.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td><span class="error" asp-validation-for="CategoryId" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-success">
+                            @if (Model == null)
+                            {
+                                @:Add Animal
+                            }
+                            else
+                            {
+                                @: Edit
+                            }
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,73 @@
+﻿@model WebAppProject.Models.Comment
+
+@{
+    ViewBag.Title = "Animal Detailes";
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h2>
+    <img src="~/Images/Animals/@ViewBag.Aminal.PictureName" />@ViewBag.Aminal.Name Details
+</h2>
+
+
+<h3 id="comments-title">Comments : (@ViewBag.CommentCount)</h3>
+
+<div id="content_animalDetails" class="Get_inTheMiddle">
+    <table id="tbl_AnimalDetailes" class="styled-table">
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>@ViewBag.Aminal.Name</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>@ViewBag.Aminal.Age</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>@ViewBag.Aminal.Description</td>
+            </tr>
+            <tr>
+                <td>Category Name</td>
+                <td>@ViewBag.Aminal.Category!.Name</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="comments-container">
+        <ul class="comments">
+            @foreach (var cmnt in ViewBag.Aminal.Comments!)
+            {
+                <li>@cmnt.comment</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@if (User.Identity!.IsAuthenticated)
+{
+    <div id="enter-comment" class="text-center">
+        <form class="addComment" asp-action="AddComment" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="AnimalId" value="@ViewBag.AminalID" />
+            <input type="hidden" asp-for="UserId" value="@ViewBag.UserID" />
+
+            <div>
+                <button class="btn btn-success" type="submit">Add New Comment</button>
+            </div>
+            <div>
+                <input type="checkbox" id="showName" name="showName" value="True" checked>
+                <label for="showName">Show my name on the comment</label>
+            </div>
+            <div>
+                <span class="error" asp-validation-for="comment"></span>
+            </div>
+            <div>
+                <textarea asp-for="comment" placeholder="Enter your comment here" maxlength="230"></textarea>
+            </div>
+        </form>
+    </div>
+}

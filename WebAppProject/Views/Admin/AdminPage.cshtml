@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebAppProject.Models.Category>
+
+@{
+    ViewBag.Title = "Administrator";
+}
+
+@section Scripts{
+    <script src="~/scripts/ShowCategory.js"></script>
+}
+
+<h2>Please Select a category</h2>
+
+<div class="text-center">
+    <a class="btn btn-outline-success" asp-action="AddEditAnimalPage" asp-controller="Admin">Add New Animal</a>
+    <br><br>
+
+    <select name="categorySelect" id="categorySelect" class=" btn btn-info">
+        <option value="All">All</option>
+        @foreach (var category in Model)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <br><br>
+
+</div>
+
+<div class="Get_inTheMiddle">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Portrait</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                @foreach (var animal in category.Animals!)
+                {
+                    <tr class="category-@category.Id">
+                        <td><img src="~/Images/Animals/@animal.PictureName"/></td>
+                        <td>@animal.Name</td>
+                        <td><a class="btn btn-warning" asp-action="AddEditAnimalPage" asp-controller="Admin" asp-route-animalId=@animal.Id>Edit</a></td>
+                        <td><a class="btn btn-danger" asp-action="DeleteAnimal" asp-controller="Admin" asp-route-animalId=@animal.Id>Detele</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

@@ -1,0 +1,53 @@
+﻿
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: darkslategray;
+}
+
+.welcome-text {
+    text-align: center;
+    margin-top: 5%;
+    background-color: gray;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+    border-radius: 20%;
+    color: #303050;
+}
+
+    .welcome-text h1 {
+        color: #303050;
+        font-size: 6em; /* Adjust the font size as needed */
+    }
+
+    .welcome-text h2 {
+        color: #303050;
+        font-size: 3em; /* Adjust the font size as needed */
+    }
+
+    .welcome-text h3 {
+        color: #303050;
+        font-size: 1.5em; /* Adjust the font size as needed */
+    }
+
+button {
+    display: block;
+    background-color: #303050;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0 auto;
+    margin-top: 10%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+    button:hover {
+        background-color: gray;
+        color: #303050;
+    }
